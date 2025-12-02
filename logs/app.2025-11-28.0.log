@@ -1,0 +1,319 @@
+2025-11-28 17:29:56.044 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 15660 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:29:56.046 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:29:57.943 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcConfig': Unsatisfied dependency expressed through field 'jwtInterceptor': Error creating bean with name 'jwtInterceptor': Injection of resource dependencies failed
+2025-11-28 17:29:57.987 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jwtInterceptor in com.linghang.we_talk.config.WebMvcConfig required a bean of type 'com.linghang.we_talk.utils.JwtUtil' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.utils.JwtUtil' in your configuration.
+
+2025-11-28 17:30:57.543 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 19832 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:30:57.545 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:30:58.925 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig': Injection of resource dependencies failed
+2025-11-28 17:30:58.962 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.linghang.we_talk.utils.JwtUtil' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.utils.JwtUtil' in your configuration.
+
+2025-11-28 17:31:27.175 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 4752 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:31:27.177 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:31:28.595 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authController': Injection of resource dependencies failed
+2025-11-28 17:31:28.630 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field userMapper in com.linghang.we_talk.service.Impl.UserServiceImpl required a bean of type 'com.linghang.we_talk.mapper.UserMapper' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.mapper.UserMapper' in your configuration.
+
+2025-11-28 17:32:15.903 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 8064 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:32:15.905 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:32:17.278 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authController': Injection of resource dependencies failed
+2025-11-28 17:32:17.310 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.linghang.we_talk.mapper.UserMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.mapper.UserMapper' in your configuration.
+
+2025-11-28 17:45:40.504 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 9772 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:45:40.506 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:45:41.890 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authController': Injection of resource dependencies failed
+2025-11-28 17:45:41.924 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.linghang.we_talk.mapper.UserMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.mapper.UserMapper' in your configuration.
+
+2025-11-28 17:46:27.848 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 16688 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:46:27.850 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:46:29.250 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authController': Injection of resource dependencies failed
+2025-11-28 17:46:29.282 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.linghang.we_talk.mapper.UserMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.mapper.UserMapper' in your configuration.
+
+2025-11-28 17:51:24.720 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 20512 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:51:24.722 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:51:26.138 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authController': Injection of resource dependencies failed
+2025-11-28 17:51:26.172 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.linghang.we_talk.mapper.UserMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.mapper.UserMapper' in your configuration.
+
+2025-11-28 17:51:49.362 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 23092 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:51:49.364 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:51:50.028 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'userMapper' defined in file [D:\Software\Java_Projects\we_talk\target\classes\com\linghang\we_talk\mapper\UserMapper.class]: Invalid value type for attribute 'factoryBeanObjectType': java.lang.String
+2025-11-28 17:51:50.045 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'userMapper' defined in file [D:\Software\Java_Projects\we_talk\target\classes\com\linghang\we_talk\mapper\UserMapper.class]: Invalid value type for attribute 'factoryBeanObjectType': java.lang.String
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getTypeForFactoryBean(AbstractAutowireCapableBeanFactory.java:857)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getType(AbstractBeanFactory.java:740)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAnnotationOnBean(DefaultListableBeanFactory.java:811)
+	at org.springframework.boot.sql.init.dependency.AnnotationDependsOnDatabaseInitializationDetector.detect(AnnotationDependsOnDatabaseInitializationDetector.java:36)
+	at org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor.detectDependsOnInitializationBeanNames(DatabaseInitializationDependencyConfigurer.java:155)
+	at org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor.postProcessBeanFactory(DatabaseInitializationDependencyConfigurer.java:118)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:197)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:784)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:602)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:765)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:454)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1374)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at com.linghang.we_talk.WeTalkApplication.main(WeTalkApplication.java:13)
+2025-11-28 17:53:14.888 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 11640 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:53:14.890 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:53:15.550 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'userMapper' defined in file [D:\Software\Java_Projects\we_talk\target\classes\com\linghang\we_talk\mapper\UserMapper.class]: Invalid value type for attribute 'factoryBeanObjectType': java.lang.String
+2025-11-28 17:53:15.567 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'userMapper' defined in file [D:\Software\Java_Projects\we_talk\target\classes\com\linghang\we_talk\mapper\UserMapper.class]: Invalid value type for attribute 'factoryBeanObjectType': java.lang.String
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getTypeForFactoryBean(AbstractAutowireCapableBeanFactory.java:857)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getType(AbstractBeanFactory.java:740)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAnnotationOnBean(DefaultListableBeanFactory.java:811)
+	at org.springframework.boot.sql.init.dependency.AnnotationDependsOnDatabaseInitializationDetector.detect(AnnotationDependsOnDatabaseInitializationDetector.java:36)
+	at org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor.detectDependsOnInitializationBeanNames(DatabaseInitializationDependencyConfigurer.java:155)
+	at org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor.postProcessBeanFactory(DatabaseInitializationDependencyConfigurer.java:118)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:197)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:784)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:602)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:765)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:454)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1374)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at com.linghang.we_talk.WeTalkApplication.main(WeTalkApplication.java:13)
+2025-11-28 17:54:10.944 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 9172 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:54:10.946 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:54:11.649 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'userMapper' defined in file [D:\Software\Java_Projects\we_talk\target\classes\com\linghang\we_talk\mapper\UserMapper.class]: Invalid value type for attribute 'factoryBeanObjectType': java.lang.String
+2025-11-28 17:54:11.666 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'userMapper' defined in file [D:\Software\Java_Projects\we_talk\target\classes\com\linghang\we_talk\mapper\UserMapper.class]: Invalid value type for attribute 'factoryBeanObjectType': java.lang.String
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getTypeForFactoryBean(AbstractAutowireCapableBeanFactory.java:857)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getType(AbstractBeanFactory.java:740)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAnnotationOnBean(DefaultListableBeanFactory.java:811)
+	at org.springframework.boot.sql.init.dependency.AnnotationDependsOnDatabaseInitializationDetector.detect(AnnotationDependsOnDatabaseInitializationDetector.java:36)
+	at org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor.detectDependsOnInitializationBeanNames(DatabaseInitializationDependencyConfigurer.java:155)
+	at org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor.postProcessBeanFactory(DatabaseInitializationDependencyConfigurer.java:118)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:197)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:784)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:602)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:765)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:454)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1374)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at com.linghang.we_talk.WeTalkApplication.main(WeTalkApplication.java:13)
+2025-11-28 17:56:04.616 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 23932 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:56:04.618 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:56:06.067 [main] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authController': Injection of resource dependencies failed
+2025-11-28 17:56:06.099 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authController': Injection of resource dependencies failed
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:347)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:983)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:765)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:454)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1374)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at com.linghang.we_talk.WeTalkApplication.main(WeTalkApplication.java:13)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userServiceImpl': Injection of resource dependencies failed
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:347)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:550)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:528)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:688)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:270)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:344)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userMapper' defined in file [D:\Software\Java_Projects\we_talk\target\classes\com\linghang\we_talk\mapper\UserMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:465)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:557)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:528)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:688)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:270)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:344)
+	... 35 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:182)
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:122)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:69)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:46)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	... 48 common frames omitted
+2025-11-28 17:57:24.256 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 412 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 17:57:24.257 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:57:26.336 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 74a5ff11-c727-4695-8210-adf2855a78a3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-11-28 17:57:26.478 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.728 seconds (process running for 3.26)
+2025-11-28 18:08:41.907 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 12632 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 18:08:41.908 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 18:08:43.877 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.462 seconds (process running for 2.951)
+2025-11-28 18:09:38.300 [http-nio-8090-exec-5] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-11-28 18:09:38.301 [http-nio-8090-exec-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-28 18:11:00.788 [http-nio-8090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-28 18:11:00.819 [http-nio-8090-exec-6] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77bb2502
+2025-11-28 18:11:00.820 [http-nio-8090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-28 18:14:22.541 [http-nio-8090-exec-3] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingRequestHeaderException: Required request header 'Authorization' for method parameter type String is not present]
+2025-11-28 18:16:26.111 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-28 18:16:26.115 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-28 19:58:48.445 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 2416 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 19:58:48.447 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 19:58:50.507 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.603 seconds (process running for 3.236)
+2025-11-28 19:59:05.340 [http-nio-8090-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingRequestHeaderException: Required request header 'Authorization' for method parameter type String is not present]
+2025-11-28 19:59:39.312 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 21416 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 19:59:39.313 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 19:59:41.359 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.56 seconds (process running for 3.076)
+2025-11-28 20:21:07.575 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 19568 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 20:21:07.576 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 20:21:09.602 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.538 seconds (process running for 3.043)
+2025-11-28 20:26:24.705 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 22208 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 20:26:24.706 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 20:26:26.805 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.608 seconds (process running for 3.096)
+2025-11-28 20:28:44.634 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 22380 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 20:28:44.635 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 20:28:46.630 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.506 seconds (process running for 3.118)
+2025-11-28 20:29:35.570 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 7976 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 20:29:35.571 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 20:29:37.545 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.472 seconds (process running for 2.966)
+2025-11-28 20:32:58.312 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 3228 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 20:32:58.313 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 20:33:00.372 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.619 seconds (process running for 3.164)
+2025-11-28 20:33:15.537 [http-nio-8090-exec-1] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 206 ms
+2025-11-28 20:33:24.833 [http-nio-8090-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 35 ms
+2025-11-28 20:34:02.525 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 20204 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 20:34:02.526 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 20:34:04.572 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.563 seconds (process running for 3.09)
+2025-11-28 20:34:07.910 [http-nio-8090-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 83 ms
+2025-11-28 20:35:12.116 [http-nio-8090-exec-5] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 106 ms
+2025-11-28 20:36:47.661 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 1596 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-28 20:36:47.662 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 20:36:49.707 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.557 seconds (process running for 3.053)
+2025-11-28 20:36:57.159 [http-nio-8090-exec-3] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 159 ms

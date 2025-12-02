@@ -1,0 +1,12 @@
+2025-11-30 11:05:23.248 [main] INFO  c.l.we_talk.WeTalkApplicationTests - Starting WeTalkApplicationTests using Java 17.0.12 with PID 9292 (started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-30 11:05:23.251 [main] INFO  c.l.we_talk.WeTalkApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-11-30 11:05:27.491 [main] INFO  c.l.we_talk.WeTalkApplicationTests - Started WeTalkApplicationTests in 4.755 seconds (process running for 5.815)
+2025-11-30 22:43:55.009 [main] INFO  c.linghang.we_talk.RedisConfigTest - Starting RedisConfigTest using Java 17.0.12 with PID 14044 (started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-30 22:43:55.011 [main] INFO  c.linghang.we_talk.RedisConfigTest - No active profile set, falling back to 1 default profile: "default"
+2025-11-30 22:43:59.082 [main] INFO  c.linghang.we_talk.RedisConfigTest - Started RedisConfigTest in 4.648 seconds (process running for 6.088)
+2025-11-30 23:00:05.519 [main] INFO  c.linghang.we_talk.RedisConfigTest - Starting RedisConfigTest using Java 17.0.12 with PID 10712 (started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-30 23:00:05.520 [main] INFO  c.linghang.we_talk.RedisConfigTest - No active profile set, falling back to 1 default profile: "default"
+2025-11-30 23:00:09.560 [main] INFO  c.linghang.we_talk.RedisConfigTest - Started RedisConfigTest in 4.565 seconds (process running for 5.827)
+2025-11-30 23:00:25.124 [main] INFO  c.linghang.we_talk.RedisConfigTest - Starting RedisConfigTest using Java 17.0.12 with PID 22288 (started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-30 23:00:25.125 [main] INFO  c.linghang.we_talk.RedisConfigTest - No active profile set, falling back to 1 default profile: "default"
+2025-11-30 23:00:28.992 [main] INFO  c.linghang.we_talk.RedisConfigTest - Started RedisConfigTest in 4.403 seconds (process running for 5.612)

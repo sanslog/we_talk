@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linghang.we_talk.mapper.ArticleMapper">
+
+    <resultMap id="ArticleResultMap" type="com.linghang.we_talk.entity.Article">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="cover_image" property="coverImage"/>
+        <result column="status" property="status"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="like_count" property="likeCount"/>
+        <result column="comment_count" property="commentCount"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="tags" property="tags"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.linghang.we_talk.entity.Article"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO articles (user_id, title, content, cover_image, status,
+                              category_id, tags, created_at, updated_at)
+        VALUES (#{userId}, #{title}, #{content}, #{coverImage}, #{status},
+                #{categoryId}, #{tags}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="com.linghang.we_talk.entity.Article">
+        UPDATE articles
+        SET title = #{title},
+            content = #{content},
+            cover_image = #{coverImage},
+            status = #{status},
+            category_id = #{categoryId},
+            tags = #{tags},
+            updated_at = NOW()
+        WHERE id = #{id} AND user_id = #{userId}
+    </update>
+
+    <select id="findById" resultMap="ArticleResultMap">
+        SELECT * FROM articles WHERE id = #{id} AND status != 2
+    </select>
+
+    <select id="findByUserId" resultMap="ArticleResultMap">
+        SELECT * FROM articles
+        WHERE user_id = #{userId} AND status != 2
+        ORDER BY created_at DESC
+    </select>
+
+    <select id="findArticles" resultMap="ArticleResultMap">
+        SELECT * FROM articles
+        WHERE status = #{status}
+        <if test="categoryId != null">
+            AND category_id = #{categoryId}
+        </if>
+        ORDER BY created_at DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countArticles" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM articles
+        WHERE status = #{status}
+        <if test="categoryId != null">
+            AND category_id = #{categoryId}
+        </if>
+    </select>
+
+    <update id="incrementViewCount">
+        UPDATE articles SET view_count = view_count + 1 WHERE id = #{id}
+    </update>
+
+    <update id="incrementLikeCount">
+        UPDATE articles SET like_count = like_count + 1 WHERE id = #{id}
+    </update>
+
+    <update id="incrementCommentCount">
+        UPDATE articles SET comment_count = comment_count + 1 WHERE id = #{id}
+    </update>
+
+    <update id="softDelete">
+        UPDATE articles SET status = 2 WHERE id = #{id} AND user_id = #{userId}
+    </update>
+
+    <update id="refIncrementLikeCount">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE articles
+            SET like_count = like_count + #{item.increateCount}
+            WHERE id = #{item.articleId}
+        </foreach>
+    </update>
+
+    <update id="refViews">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE articles
+            SET view_count = view_count + #{item.increateCount}
+            WHERE id = #{item.articleId}
+        </foreach>
+    </update>
+
+</mapper>

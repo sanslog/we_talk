@@ -1,0 +1,74 @@
+server:
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/json
+    min-response-size: 1024
+  servlet:
+    context-path: /AnimalSchool # 统一URL前缀
+  port: 8090 # 运行端口
+
+spring:
+  application:
+    name: we_talk
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/animalschool?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&allowMultiQueries=true
+    username: root
+    password: MySQL321
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari: # HikariCP连接池优化配置
+      auto-commit: false # 按需关闭自动提交（若业务需手动控制事务则保留，否则建议true）
+      connection-timeout: 3000 # 连接超时时间（3秒，默认30秒，建议3-5秒，太短易超时）
+      validation-timeout: 3000 # 连接校验超时时间（3秒，需≤connection-timeout）
+      max-lifetime: 180000 # 连接最大生命周期（3分钟，建议15-30分钟，避免连接失效）
+      maximum-pool-size: 20 # 最大连接数（根据CPU核心数调整，建议CPU核心数×2+1，如8核设17）
+      minimum-idle: 5 # 最小空闲连接数（建议与maximum-pool-size差距不要过大，避免频繁创建销毁）
+      idle-timeout: 600000 # 新增：空闲连接超时时间（10分钟，超过则回收，需＜max-lifetime）
+      connection-test-query: SELECT 1 # 新增：连接校验SQL（确保连接可用，MySQL推荐用此SQL）
+
+  task: #spring框架自带的定时任务配置，需要主类手动开启定时计划功能后生效
+    scheduling:
+      pool:
+        size: 5
+
+mybatis:
+  #check-config-location: true # this value default to false
+  mapper-locations: classpath:mapper/**/*.xml
+#  config-location:
+
+jwt:
+  # 签名密钥（生产环境应使用更复杂的密钥并通过环境变量注入）
+  secret: 6f4a8d2b9e7c3a1f5e8b2c9d3a7f4e8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5
+  # Access Token过期时间（30分钟）
+  access-token-expire: 1800000
+  # Refresh Token过期时间（7天）
+  refresh-token-expire: 604800000
+
+springdoc:
+  # OpenAPI JSON/YAML 文档端点配置
+  api-docs:
+    path: /v3/api-docs                    # 默认路径 [citation:4]
+    enabled: true                         # 是否启用 [citation:9]
+  # Swagger UI 配置
+  swagger-ui:
+    path: /swagger-ui.html                # Swagger UI 访问路径 [citation:3][citation:9]
+    enabled: true                         # 是否启用 Swagger UI [citation:9]
+    operations-sorter: method             # 按HTTP方法排序接口 [citation:4]
+    tags-sorter: alpha                    # 按字母顺序排序标签 [citation:4]
+    display-request-duration: true        # 显示请求处理时间
+    filter: true                          # 启用搜索过滤器
+  # 分组配置 (可选) [citation:9]
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: 'com.linghang.we_talk.controller'
+  # 全局设置
+  default-flat-param-object: false        # 参数对象展开设置 [citation:9]
+  cache:
+    disabled: true                        # 禁用缓存，开发时建议开启
+
+redis-template:
+  keys:
+    article: 'article'
+    article-like: 'article:like:'
+    article-views: 'article:views:'

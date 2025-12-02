@@ -1,0 +1,15 @@
+2025-11-29 22:32:30.304 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.linghang.we_talk.filter.ArticleInterceptor' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.filter.ArticleInterceptor' in your configuration.
+

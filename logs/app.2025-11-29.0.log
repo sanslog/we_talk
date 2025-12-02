@@ -1,0 +1,22 @@
+2025-11-29 22:32:28.351 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 22416 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-29 22:32:28.352 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-29 22:32:30.252 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webMvcConfig': Injection of resource dependencies failed
+2025-11-29 22:32:30.304 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.linghang.we_talk.filter.ArticleInterceptor' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.linghang.we_talk.filter.ArticleInterceptor' in your configuration.
+
+2025-11-29 22:32:56.580 [main] INFO  c.linghang.we_talk.WeTalkApplication - Starting WeTalkApplication using Java 17.0.12 with PID 21548 (D:\Software\Java_Projects\we_talk\target\classes started by 39737 in D:\Software\Java_Projects\we_talk)
+2025-11-29 22:32:56.580 [main] INFO  c.linghang.we_talk.WeTalkApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-29 22:32:58.959 [main] INFO  c.linghang.we_talk.WeTalkApplication - Started WeTalkApplication in 2.899 seconds (process running for 3.431)
+2025-11-29 22:33:26.415 [http-nio-8090-exec-5] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 302 ms

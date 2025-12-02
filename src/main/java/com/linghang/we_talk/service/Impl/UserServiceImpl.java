@@ -1,0 +1,57 @@
+package com.linghang.we_talk.service.Impl;
+
+import com.linghang.we_talk.entity.User;
+import com.linghang.we_talk.mapper.UserMapper;
+import com.linghang.we_talk.service.UserService;
+import com.linghang.we_talk.utils.PasswordUtil;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+@Service
+@Transactional
+public class UserServiceImpl implements UserService {
+
+    @Resource
+    UserMapper userMapper;
+
+    @Resource
+    PasswordUtil passwordUtil;
+
+    /**
+     * @apiNote 返回数据库查询是否有该用户的结果
+     * @return boolean
+     * */
+    @Override
+    public boolean canLogin(User user) {
+        String username = user.getUsername();
+        String rawPassword = user.getPassword();
+
+        User userByName = userMapper.getUserByName(username);
+
+        return passwordUtil.bcryptMatches(rawPassword,userByName.getPassword());
+    }
+
+    @Override
+    public void register(User user) {
+        String username = user.getUsername();
+        String rawPassword = user.getPassword();
+
+        userMapper.save(username,passwordUtil.bcryptEncode(rawPassword));
+    }
+
+    /**
+     * @apiNote 检查该用户名是否已经被注册
+     * @return boolean
+     * */
+    @Override
+    public boolean matchUserByName(String username) {
+        return userMapper.getUserByName(username) != null;
+    }
+
+    @Override
+    public User getUserByName(String username) {
+        return userMapper.getUserByName(username);
+    }
+}
