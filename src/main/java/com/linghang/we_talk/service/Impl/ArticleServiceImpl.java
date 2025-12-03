@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -237,7 +238,14 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void readArticle(Long articleId) {
-        redisTemplate.opsForValue().increment(ARTICLE_VIEW+articleId);
+//        redisTemplate.opsForValue().increment(ARTICLE_VIEW+articleId);
+        try {
+            HashOperations<String, String, Long> hashOps = redisTemplate.opsForHash();
+            hashOps.increment(ARTICLE_VIEW,articleId.toString(),1L);
+        } catch (Exception e) {
+            log.error("增加文章浏览量出错{}",e.getMessage());
+            //这里可以降级走数据库
+        }
     }
 
     @Override

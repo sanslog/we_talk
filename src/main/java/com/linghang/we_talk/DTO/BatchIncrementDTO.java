@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BatchIncrementDTO {
     private Long articleId;
-    private Integer increateCount;
+    private Long increateCount;
 
-    public BatchIncrementDTO(Long articleId,Integer increateCount){
+    public BatchIncrementDTO(Long articleId,Long increateCount){
         this.articleId=articleId;
         this.increateCount=increateCount;
     }

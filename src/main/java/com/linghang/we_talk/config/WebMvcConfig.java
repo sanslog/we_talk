@@ -26,7 +26,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/swagger-ui.html",
                         "/swagger-ui/**",
                         "/v3/api-docs/**",
-                        "/webjars/**"
+                        "/webjars/**",
+                        "/articles/{id}/view"
                 );
     }
 }
