@@ -2,8 +2,9 @@ package com.linghang.we_talk.mapper;
 
 import com.linghang.we_talk.DTO.BatchIncrementDTO;
 import com.linghang.we_talk.entity.Article;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import com.linghang.we_talk.entity.Like;
+import org.apache.ibatis.annotations.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +58,17 @@ public interface ArticleMapper {
      */
     int incrementLikeCount(@Param("id") Long id);
 
+    /**
+     * 构建点赞-用户-文章关联表
+     * */
+    @Insert("insert into `like`(article_id, user_id) VALUE (#{articleId},#{userId})")
+    void insertLike(@Param("articleId") Long articleId,@Param("userId")Integer userId);
+
+    @Delete("delete from `like` where article_id=#{articleId} and user_id=#{userId}")
+    int delLike(@Param("articleId") Long articleId,@Param("userId")Integer userId);
+
+    @Select("select * from `like` where user_id=#{userId} and article_id=#{articleId}")
+    Like searchLike(@Param("articleId") Long articleId,@Param("userId")Integer userId);
     /**
      * 增加评论数
      */

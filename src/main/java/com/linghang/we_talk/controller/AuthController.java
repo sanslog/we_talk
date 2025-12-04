@@ -126,7 +126,7 @@ public class AuthController {
     }
 
     @Operation(summary = "该接口用于获取用户所有信息")
-    @GetMapping
+    @GetMapping("/info")
     public Result<User> getUserInfo(@RequestHeader("Authorization") String accessToken){
         try {
             String username = jwtUtil.validateToken(accessToken);

@@ -12,5 +12,7 @@ public interface CommentService {
     List<CommentDTO> buildCommentTree(List<Comment> comments);
 
     void addComment(Comment comment);
+
+    void deleteComment(Long id, Long postId);
 }
 

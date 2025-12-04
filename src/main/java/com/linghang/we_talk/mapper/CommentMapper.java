@@ -29,4 +29,6 @@ public interface CommentMapper {
 
     // 统计一级评论数量
     int countRootComments(@Param("postId") Long postId);
+
+    int deleteById(@Param("id") Long id);
 }

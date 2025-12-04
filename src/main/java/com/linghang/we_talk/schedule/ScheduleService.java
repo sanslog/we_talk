@@ -101,6 +101,8 @@ public class ScheduleService {
         }
     }
 
+    //TODO:定时清理所有软删除的文章，给一个缓冲时间。
+
 //    @Async
 //    protected void syncLikesToDB(){
 //        //主动过期文章

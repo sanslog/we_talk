@@ -38,12 +38,16 @@ package com.linghang.we_talk.controller;
 import com.linghang.we_talk.DTO.ArticleCreateRequest;
 import com.linghang.we_talk.DTO.ArticleUpdateRequest;
 import com.linghang.we_talk.DTO.ArticleVO;
+import com.linghang.we_talk.entity.User;
 import com.linghang.we_talk.service.ArticleService;
+import com.linghang.we_talk.service.UserService;
+import com.linghang.we_talk.utils.JwtUtil;
 import com.linghang.we_talk.utils.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +62,10 @@ public class ArticleController {
 
     @Resource
     private ArticleService articleService;
+    @Autowired
+    private JwtUtil jwtUtil;
+    @Autowired
+    private UserService userService;
 
 
     /**
@@ -127,12 +135,37 @@ public class ArticleController {
     /**
      * 点赞文章，不主动暴露接口
      */
-    @PostMapping("/{id}/like")
-    public Result<?> likeArticle(@PathVariable Long id) {
+    @PostMapping("/{id}")
+    public Result<?> likeOrDislikeArticle(@RequestHeader("Authorization") String accessToken,@PathVariable Long id,@RequestParam("lod") boolean isLike) {
         //添加一个 用户-点赞-文章 关系表
+        try{
+            String username =  jwtUtil.validateToken(accessToken);
 
-        articleService.likeArticle(id);
+            User user = userService.getUserByName(username);
+            Integer userId = user.getId();
+
+            if (isLike) {
+                articleService.likeArticle(id, userId);
+            } else {
+                articleService.disLikeArticle(id, userId);
+            }
+
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            String msg = isLike ? "点赞失败" : "取消点赞失败";
+            return Result.error(msg);
+        }
         return Result.succeed();
+    }
+
+    @GetMapping("/liked/{id}")
+    public Result<?> likeStatus(@RequestHeader("Authorization") String accessToken, @PathVariable("id") Long articleId){
+        String username =  jwtUtil.validateToken(accessToken);
+
+        User user = userService.getUserByName(username);
+        Integer userId = user.getId();
+
+        return Result.succeed(articleService.checkLiked(articleId,userId));
     }
 
     @Operation(summary = "访问该接口，则表示指定id的文章浏览量加一")

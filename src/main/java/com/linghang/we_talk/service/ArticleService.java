@@ -51,7 +51,11 @@ public interface ArticleService {
     /**
      * 点赞文章
      */
-    void likeArticle(Long articleId);
+    void likeArticle(Long articleId,Integer userId);
+
+    boolean checkLiked(Long articleId, Integer userid);
+
+    void disLikeArticle(Long articleId, Integer userId);
 
     /**
      * 点赞并缓存点赞，通过定时刷新实现更新

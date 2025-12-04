@@ -226,9 +226,19 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    @CacheEvict(value = "article", key = "#articleId")
-    public void likeArticle(Long articleId) {
-        articleMapper.incrementLikeCount(articleId);
+    public void likeArticle(Long articleId,Integer userId) {
+        //articleMapper.incrementLikeCount(articleId);
+        articleMapper.insertLike(articleId,userId);
+    }
+
+    @Override
+    public boolean checkLiked(Long articleId, Integer userid){
+        return articleMapper.searchLike(articleId,userid)!=null;
+    }
+
+    @Override
+    public void disLikeArticle(Long articleId, Integer userId) {
+        articleMapper.delLike(articleId,userId);
     }
 
     @Override
@@ -241,9 +251,9 @@ public class ArticleServiceImpl implements ArticleService {
 //        redisTemplate.opsForValue().increment(ARTICLE_VIEW+articleId);
         try {
             HashOperations<String, String, Long> hashOps = redisTemplate.opsForHash();
-            hashOps.increment(ARTICLE_VIEW,articleId.toString(),1L);
+            hashOps.increment(ARTICLE_VIEW, articleId.toString(), 1L);
         } catch (Exception e) {
-            log.error("增加文章浏览量出错{}",e.getMessage());
+            log.error("增加文章浏览量出错{}", e.getMessage());
             //这里可以降级走数据库
         }
     }

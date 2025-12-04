@@ -102,5 +102,14 @@ public class CommentServiceImpl implements CommentService {
 
         commentMapper.save(comment);
     }
+
+    /**
+     * @apiNote 传入评论的id，以及对应文章的id，用于评论在redis中的缓存
+     */
+    @CacheEvict(value = "commentTree",key = "#postId")
+    @Override
+    public void deleteComment(Long id, Long postId){
+        commentMapper.deleteById(id);
+    }
 }
 
