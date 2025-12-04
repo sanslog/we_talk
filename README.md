@@ -78,3 +78,10 @@ alter table comment add constraint cr_user foreign key (reply_to_user_id) refere
 alter table comment add constraint cr_comment foreign key (reply_to_comment_id) references comment(id) on delete set null ;
 commit;
 rollback;
+
+create table `like`(
+    `article_id` bigint unsigned not null comment '指向的文章ID',
+    `user_id` bigint unsigned not null comment '指向的用户ID',
+
+    primary key (article_id,user_id) -- 生成唯一的有序序列
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户点赞/收藏记录表';
