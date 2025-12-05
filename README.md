@@ -1,4 +1,4 @@
-```
+```mysql
 create database we_talk;
 
 use we_talk;
