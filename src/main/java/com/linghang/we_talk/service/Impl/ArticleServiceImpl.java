@@ -268,6 +268,11 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.refViews(resultList);
     }
 
+    @Override
+    public int clearSoftDel(){
+        return articleMapper.hardDelete();
+    }
+
     /**
      * 保存文章图片
      */

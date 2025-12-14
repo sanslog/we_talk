@@ -1,7 +1,8 @@
 package com.linghang.we_talk.DTO;
 
 import lombok.Data;
-import java.time.LocalDateTime;
+
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -20,8 +21,8 @@ public class ArticleVO {
     private Integer commentCount;
     private Integer categoryId;
     private List<String> tags;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
     private String authorName;
     private List<ArticleImageVO> images;
 }

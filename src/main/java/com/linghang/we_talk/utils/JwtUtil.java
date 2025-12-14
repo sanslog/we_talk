@@ -21,7 +21,7 @@ public class JwtUtil {
     public long REFRESH_EXPIRE; // 7天
 
     public final String JWT_BLACKLIST = "jwt:blacklist:";
-    public final String JWT_REFRESH = "jwt:refresh";
+    public final String JWT_REFRESH = "jwt:refresh:";
 
     /**
      * 生成AccessToken

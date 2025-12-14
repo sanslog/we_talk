@@ -1,6 +1,9 @@
 package com.linghang.we_talk.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 /**
@@ -12,5 +15,5 @@ public class ArticleImage {
     private Long articleId;
     private String imageUrl;
     private Integer sortOrder;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 }

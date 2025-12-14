@@ -17,18 +17,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private ArticleInterceptor articleInterceptor;
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(jwtInterceptor)
-                .addPathPatterns("/auth/logout")    //开发中放开所有接口，保留logout测试接口。
-                .excludePathPatterns(
-                        "/auth/login",
-                        "/auth/refresh",
-                        "/auth/register",
-                        "/swagger-ui.html",
-                        "/swagger-ui/**",
-                        "/v3/api-docs/**",
-                        "/webjars/**",
-                        "/articles/{id}/view"
-                );
+//        registry.addInterceptor(jwtInterceptor)
+//                .addPathPatterns("/auth/logout")    //开发中放开所有接口，保留logout测试接口。
+//                .excludePathPatterns(
+//                        "/auth/login",
+//                        "/auth/refresh",
+//                        "/auth/register",
+//                        "/swagger-ui.html",
+//                        "/swagger-ui/**",
+//                        "/v3/api-docs/**",
+//                        "/webjars/**",
+//                        "/articles/{id}/view"
+//                );
     }
 }
 

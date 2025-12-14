@@ -1,7 +1,9 @@
 package com.linghang.we_talk.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,8 +23,8 @@ public class Article {
     private Integer commentCount;
     private Integer categoryId;
     private String tags;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
 
     // 非数据库字段
     private List<ArticleImage> images;

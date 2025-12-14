@@ -99,4 +99,8 @@
         </foreach>
     </update>
 
+    <delete id="hardDelete">
+        delete from we_talk.articles where we_talk.articles.status = 2
+    </delete>
+
 </mapper>

@@ -87,4 +87,6 @@ public interface ArticleMapper {
 
 
     int refViews(@Param("list") List<BatchIncrementDTO> list);
+
+    int hardDelete();
 }

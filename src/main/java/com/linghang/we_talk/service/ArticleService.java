@@ -70,4 +70,6 @@ public interface ArticleService {
     void likesToDB(List<BatchIncrementDTO> list);
 
     void viewsToDB(List<BatchIncrementDTO> resultList);
+
+    int clearSoftDel();
 }

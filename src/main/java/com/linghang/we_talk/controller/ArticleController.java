@@ -71,6 +71,7 @@ public class ArticleController {
     /**
      * 创建文章
      */
+    @Operation(summary = "创建文章")
     @PostMapping("/create")
     public Result<?> createArticle(
             @Valid @RequestBody ArticleCreateRequest request) {
@@ -81,6 +82,7 @@ public class ArticleController {
     /**
      * 更新文章
      */
+    @Operation(summary = "更新文章")
     @PutMapping("/{id}")
     public Result<?> updateArticle(
             @PathVariable Long id,
@@ -93,6 +95,7 @@ public class ArticleController {
     /**
      * 删除文章
      */
+    @Operation(summary = "删除文章")
     @DeleteMapping("/{id}")
     public Result<?> deleteArticle(
             @PathVariable Long id,
@@ -104,15 +107,23 @@ public class ArticleController {
     /**
      * 获取文章详情
      */
+    @Operation(summary = "根据ID获取文章详情")
     @GetMapping("/{id}")
     public Result<ArticleVO> getArticleDetail(@PathVariable Long id) {
-        ArticleVO article = articleService.getArticleDetail(id);
+        ArticleVO article = null;
+        try {
+            article = articleService.getArticleDetail(id);
+        } catch (Exception e) {
+            log.info("文章不存在或者被软删除，ID：{},{}",id,e.getMessage());
+            return Result.error("文章不存在");
+        }
         return Result.succeed(article);
     }
 
     /**
      * 分页查询文章列表
      */
+    @Operation(summary = "分页查询文章列表")
     @GetMapping
     public Result<Page<ArticleVO>> getArticleList(
             @RequestParam(defaultValue = "1") Integer status,
@@ -126,6 +137,7 @@ public class ArticleController {
     /**
      * 获取用户文章列表
      */
+    @Operation(summary = "获取用户所有文章")
     @GetMapping("/user/{userId}")
     public Result<List<ArticleVO>> getUserArticles(@PathVariable Long userId) {
         List<ArticleVO> articles = articleService.getUserArticles(userId);
@@ -135,6 +147,7 @@ public class ArticleController {
     /**
      * 点赞文章，不主动暴露接口
      */
+    @Operation(summary = "点赞文章/取消点赞，需要指定文章ID")
     @PostMapping("/{id}")
     public Result<?> likeOrDislikeArticle(@RequestHeader("Authorization") String accessToken,@PathVariable Long id,@RequestParam("lod") boolean isLike) {
         //添加一个 用户-点赞-文章 关系表
@@ -158,6 +171,7 @@ public class ArticleController {
         return Result.succeed();
     }
 
+    @Operation(summary = "获取用户是否点赞了该文章")
     @GetMapping("/liked/{id}")
     public Result<?> likeStatus(@RequestHeader("Authorization") String accessToken, @PathVariable("id") Long articleId){
         String username =  jwtUtil.validateToken(accessToken);

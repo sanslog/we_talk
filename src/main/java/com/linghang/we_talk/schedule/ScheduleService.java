@@ -32,7 +32,7 @@ public class ScheduleService {
     /**
      * 早8点-晚23点59分：每10分钟执行一次
      */
-    @Scheduled(cron = "0 */10 8-23 * * ?") // 对应第一个Cron表达式
+    @Scheduled(cron = "0 */10 8-23 * * ?")
     public void task10MinInterval() {
         syncViewsToDB();
     }
@@ -40,7 +40,7 @@ public class ScheduleService {
     /**
      * 凌晨0点-早7点59分：每20分钟执行一次
      */
-    @Scheduled(cron = "0 */20 0-7 * * ?") // 对应第二个Cron表达式
+    @Scheduled(cron = "0 */20 0-7 * * ?")
     public void task30MinInterval() {
         syncViewsToDB();
     }
@@ -101,7 +101,17 @@ public class ScheduleService {
         }
     }
 
-    //TODO:定时清理所有软删除的文章，给一个缓冲时间。
+    @Async
+    @Scheduled(cron = "0 0 4 * * 1")
+    public void clearSoftDeleteArticles(){
+        try{
+            log.info("定时清理被软删除的文章");
+            int num = articleService.clearSoftDel();
+            log.info("一共有{}篇文章被删除",num);
+        }catch(Exception e){
+            log.error("清理时出现异常：{}",e.getMessage());
+        }
+    }
 
 //    @Async
 //    protected void syncLikesToDB(){
