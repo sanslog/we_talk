@@ -4,20 +4,19 @@ import com.linghang.we_talk.entity.User;
 import com.linghang.we_talk.mapper.UserMapper;
 import com.linghang.we_talk.service.UserService;
 import com.linghang.we_talk.utils.PasswordUtil;
-import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Resource
-    UserMapper userMapper;
+    private final UserMapper userMapper;
 
-    @Resource
-    PasswordUtil passwordUtil;
+    private final PasswordUtil passwordUtil;
 
     /**
      * @apiNote 返回数据库查询是否有该用户的结果

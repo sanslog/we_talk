@@ -4,6 +4,7 @@ import com.linghang.we_talk.DTO.CommentDTO;
 import com.linghang.we_talk.entity.Comment;
 import com.linghang.we_talk.mapper.CommentMapper;
 import com.linghang.we_talk.service.CommentService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -19,16 +20,16 @@ import java.util.Map;
 @Slf4j
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
 
-    @Autowired
-    private CommentMapper commentMapper;
+    private final CommentMapper commentMapper;
 
     /**
      * @apiNote 该接口用于构建评论树
      * @return 返回一个数组，为一个构建好的二级评论树
      * */
-    @Cacheable(value = "commentTree#30m",key = "#postId",sync = true)
+    @Cacheable(value = "commentTree#15m",key = "#postId",sync = true)
     @Override
     public List<CommentDTO> getComments(Long postId) {
         List<Comment> comments = commentMapper.findByPostId(postId);

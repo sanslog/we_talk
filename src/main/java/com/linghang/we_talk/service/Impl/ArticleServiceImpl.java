@@ -8,6 +8,7 @@ import com.linghang.we_talk.mapper.ArticleMapper;
 import com.linghang.we_talk.mapper.ArticleImageMapper;
 import com.linghang.we_talk.service.ArticleService;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,6 +34,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleMapper articleMapper;
@@ -46,12 +48,6 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Value("${redis-template.keys.article-views}")
     private String ARTICLE_VIEW;
-
-    @Autowired
-    public ArticleServiceImpl(ArticleMapper articleMapper, ArticleImageMapper articleImageMapper) {
-        this.articleMapper = articleMapper;
-        this.articleImageMapper = articleImageMapper;
-    }
 
     @Override
     @Transactional
@@ -152,7 +148,7 @@ public class ArticleServiceImpl implements ArticleService {
     public void deleteArticle(Long articleId, Long userId) {
         log.info("删除文章, ID: {}, 用户ID: {}", articleId, userId);
 
-        int result = articleMapper.softDelete(articleId, userId);
+        int result = articleMapper.softDelete(articleId);
         if (result <= 0) {
             throw new RuntimeException("删除文章失败或文章不存在");
         }
@@ -161,7 +157,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    @Cacheable(value = "article#10m", key = "#articleId", unless = "#result == null")
+    @Cacheable(value = "article#10m", key = "#articleId", unless = "#result == null",sync = true)
     public ArticleVO getArticleDetail(Long articleId) {
         log.debug("获取文章详情, ID: {}", articleId);
 
@@ -183,6 +179,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    @Cacheable(value = "article:list#4m",key = "'article:list:' + (#status ?: 1) + ':' + (#categoryId) + ':' + #page + ':' + #size",sync = true)
     public Page<ArticleVO> getArticleList(Integer status, Integer categoryId, int page, int size) {
         log.debug("查询文章列表, 状态: {}, 分类: {}, 页码: {}, 大小: {}", status, categoryId, page, size);
 

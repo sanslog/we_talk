@@ -50,7 +50,18 @@
     </select>
 
     <select id="findArticles" resultMap="ArticleResultMap">
-        SELECT * FROM articles
+        SELECT id,
+               user_id,
+               title,
+               cover_image,
+               status,
+               view_count,
+               like_count,
+               comment_count,
+               category_id,
+               tags,
+               created_at
+        FROM articles
         WHERE status = #{status}
         <if test="categoryId != null">
             AND category_id = #{categoryId}
@@ -80,7 +91,7 @@
     </update>
 
     <update id="softDelete">
-        UPDATE articles SET status = 2 WHERE id = #{id} AND user_id = #{userId}
+        UPDATE articles SET status = 2 WHERE id = #{id}
     </update>
 
     <update id="refIncrementLikeCount">

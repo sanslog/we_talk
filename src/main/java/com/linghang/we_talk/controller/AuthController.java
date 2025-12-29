@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +24,17 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 @Tag(name = "authController",description = "用户验证登录注册相关")
 public class AuthController {
     @Resource
     private RedisTemplate<String, String> redisTemplate;
 
-    @Resource
-    private JwtUtil jwtUtil;
 
-    @Resource
-    private UserService userService;
+    private final JwtUtil jwtUtil;
+
+
+    private final UserService userService;
 
     @Operation(
             summary = "用户登录",

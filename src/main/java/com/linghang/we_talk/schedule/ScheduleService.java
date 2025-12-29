@@ -2,9 +2,10 @@ package com.linghang.we_talk.schedule;
 
 import com.linghang.we_talk.DTO.BatchIncrementDTO;
 import com.linghang.we_talk.service.ArticleService;
+import com.linghang.we_talk.service.CommentService;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
@@ -17,16 +18,26 @@ import java.util.*;
 @Slf4j
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class ScheduleService {
 
     @Resource
     private RedisTemplate<String,Object> redisTemplate;
 
-    @Autowired
-    private ArticleService articleService;
+    private final ArticleService articleService;
+
+    private final CommentService commentService;
 
     @Value("${redis-template.keys.article-views}")
     private String ARTICLE_VIEW;
+
+    @Value("${redis-template.keys.reported-key}")
+    private String REPORTED_KEY;
+
+    @Value("${redis-template.keys.reported-max-count}")
+    private Integer REPORTED_MAX_COUNT;
+
+
 
 
     /**
@@ -44,6 +55,27 @@ public class ScheduleService {
     public void task30MinInterval() {
         syncViewsToDB();
     }
+
+    @Scheduled(cron = "0 0 5 * * *")
+    public void taskPreDay(){
+        clearReported();
+    }
+
+    @Async
+    @Scheduled(cron = "0 0 4 * * 1")
+    public void clearSoftDeleteArticles(){
+        try{
+            log.info("定时清理被软删除的文章");
+            int num = articleService.clearSoftDel();
+            log.info("一共有{}篇文章被删除",num);
+        }catch(Exception e){
+            log.error("清理时出现异常：{}",e.getMessage());
+        }
+    }
+
+
+
+
 
 
     @Async
@@ -101,54 +133,35 @@ public class ScheduleService {
         }
     }
 
-    @Async
-    @Scheduled(cron = "0 0 4 * * 1")
-    public void clearSoftDeleteArticles(){
-        try{
-            log.info("定时清理被软删除的文章");
-            int num = articleService.clearSoftDel();
-            log.info("一共有{}篇文章被删除",num);
-        }catch(Exception e){
-            log.error("清理时出现异常：{}",e.getMessage());
-        }
-    }
+    public void clearReported(){
+        Map<Object, Object> reportMap = redisTemplate.opsForHash().entries(REPORTED_KEY);
 
-//    @Async
-//    protected void syncLikesToDB(){
-//        //主动过期文章
-//        log.info("操作redis持久化阅读量数据到MySQL");
-//        List<BatchIncrementDTO> resultList = new ArrayList<>();
-//
-//        ScanOptions options = ScanOptions.scanOptions()
-//                .match(ARTICLE_VIEW+"*")
-//                .build();
-//
-//        try (Cursor<String> cursor = redisTemplate.scan(options)) {
-//            while (cursor.hasNext()) {
-//                String key = cursor.next();
-//                String value = Objects.requireNonNull(redisTemplate.opsForValue().getAndDelete(key)).toString();
-//
-//                if (value != null) {
-//                    String idStr = key.substring((ARTICLE_VIEW+"*").length());
-//                    Long articleId = Long.parseLong(idStr);
-//                    Integer likeCount = Integer.parseInt(value);
-//
-//                    resultList.add(new BatchIncrementDTO(articleId,likeCount));
-//                }
-//            }
-//        }catch (Exception e){
-//            log.error("从redis中获取阅读量缓存异常:{}",e.getMessage());
-//        }
-//
-//        if (!resultList.isEmpty()) {
-//            log.info("数据持久化开始");
-//            try {
-//                articleService.viewsToDB(resultList);
-//            } catch (Exception e) {
-//                log.error("数据持久化失败{}",e.getMessage());
-//                return;
-//            }
-//            log.info("数据持久化完成，共计：{} 篇文章阅读量数据更新",resultList.size());
-//        }
-//    }
+        log.info("清理被举报的文章和评论");
+        //遍历清除满足一定举报次数的文章/评论
+        reportMap.forEach((key,value)->{
+            if(Integer.parseInt(value.toString()) > REPORTED_MAX_COUNT){
+                String[] split = key.toString().split(":");
+                Integer type = Integer.getInteger(split[0]);
+                Long id = Long.parseLong(split[1]);
+                //删除文章/评论
+                try {
+                    switch (type){
+                        //-1表示该操作由服务器自行完成，必须传入参数是为了兼容原有接口
+                        case 1 ->
+                            articleService.deleteArticle(id,-1L);
+                        case 2 ->
+                            commentService.deleteComment(id,-1L);
+                    }
+                } catch (Exception e) {
+                    log.error("删除文章/评论失败:{}", e.getMessage());
+                }
+                //清理hash
+                try {
+                    redisTemplate.opsForHash().delete(REPORTED_KEY,key);
+                } catch (Exception e) {
+                    log.error("redis清除举报功能维护的hash表时出错：{}",e.getMessage());
+                }
+            }
+        });
+    }
 }

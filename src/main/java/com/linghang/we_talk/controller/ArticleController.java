@@ -46,6 +46,7 @@ import com.linghang.we_talk.utils.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -57,15 +58,16 @@ import java.util.List;
 @Slf4j
 @Validated
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/articles")
 public class ArticleController {
 
     @Resource
     private ArticleService articleService;
-    @Autowired
-    private JwtUtil jwtUtil;
-    @Autowired
-    private UserService userService;
+
+    private final JwtUtil jwtUtil;
+
+    private final UserService userService;
 
 
     /**
@@ -83,7 +85,7 @@ public class ArticleController {
      * 更新文章
      */
     @Operation(summary = "更新文章")
-    @PutMapping("/{id}")
+    @GetMapping("/upt/{id}")
     public Result<?> updateArticle(
             @PathVariable Long id,
             @Valid @RequestBody ArticleUpdateRequest request) {
@@ -96,7 +98,7 @@ public class ArticleController {
      * 删除文章
      */
     @Operation(summary = "删除文章")
-    @DeleteMapping("/{id}")
+    @GetMapping("/del/{id}")
     public Result<?> deleteArticle(
             @PathVariable Long id,
             @RequestHeader("X-User-Id") Long userId) {

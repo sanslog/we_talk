@@ -77,7 +77,7 @@ public interface ArticleMapper {
     /**
      * 软删除文章
      */
-    int softDelete(@Param("id") Long id, @Param("userId") Long userId);
+    int softDelete(@Param("id") Long id);
 
     /**
      * 定时任务刷新点赞数
