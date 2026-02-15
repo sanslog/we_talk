@@ -62,13 +62,13 @@ public interface ArticleMapper {
      * 构建点赞-用户-文章关联表
      * */
     @Insert("insert into `like`(article_id, user_id) VALUE (#{articleId},#{userId})")
-    void insertLike(@Param("articleId") Long articleId,@Param("userId")Integer userId);
+    void insertLike(@Param("articleId") Long articleId,@Param("userId")Long userId);
 
     @Delete("delete from `like` where article_id=#{articleId} and user_id=#{userId}")
-    int delLike(@Param("articleId") Long articleId,@Param("userId")Integer userId);
+    void delLike(@Param("articleId") Long articleId,@Param("userId")Long userId);
 
     @Select("select * from `like` where user_id=#{userId} and article_id=#{articleId}")
-    Like searchLike(@Param("articleId") Long articleId,@Param("userId")Integer userId);
+    Like searchLike(@Param("articleId") Long articleId,@Param("userId")Long userId);
     /**
      * 增加评论数
      */

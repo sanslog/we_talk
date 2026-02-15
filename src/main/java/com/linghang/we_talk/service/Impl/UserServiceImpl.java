@@ -23,13 +23,13 @@ public class UserServiceImpl implements UserService {
      * @return boolean
      * */
     @Override
-    public boolean canLogin(User user) {
+    public Long canLogin(User user) {
         String username = user.getUsername();
         String rawPassword = user.getPassword();
 
         User userByName = userMapper.getUserByName(username);
-
-        return passwordUtil.bcryptMatches(rawPassword,userByName.getPassword());
+        if(!passwordUtil.bcryptMatches(rawPassword, userByName.getPassword())) return -1L;
+        return userByName.getId();
     }
 
     @Override
@@ -52,5 +52,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByName(String username) {
         return userMapper.getUserByName(username);
+    }
+
+    @Override
+    public User getUserById(String id) {
+        return userMapper.getUserById(id);
     }
 }

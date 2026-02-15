@@ -25,9 +25,10 @@ public class Article {
     private String tags;
     private Date createdAt;
     private Date updatedAt;
+    private String nickname;
 
     // 非数据库字段
     private List<ArticleImage> images;
-    private String authorName;
+
 }
 

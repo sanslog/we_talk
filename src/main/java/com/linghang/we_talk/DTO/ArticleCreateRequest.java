@@ -15,6 +15,8 @@ public class ArticleCreateRequest {
     @NotNull(message = "用户ID不能为空")
     private Long userId;
 
+    private String nickname;
+
     @NotBlank(message = "标题不能为空")
     private String title;
 

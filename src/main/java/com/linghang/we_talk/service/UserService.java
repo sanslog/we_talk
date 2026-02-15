@@ -4,7 +4,7 @@ import com.linghang.we_talk.entity.User;
 
 public interface UserService {
 
-    boolean canLogin(User user);
+    Long canLogin(User user);
 
     void register(User user);
 
@@ -15,4 +15,6 @@ public interface UserService {
     boolean matchUserByName(String username);
 
     User getUserByName(String username);
+
+    User getUserById(String id);
 }

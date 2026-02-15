@@ -75,9 +75,6 @@ public class ScheduleService {
 
 
 
-
-
-
     @Async
     protected void syncViewsToDB() {
         log.info("开始同步文章浏览量增量到数据库");
@@ -139,8 +136,8 @@ public class ScheduleService {
         log.info("清理被举报的文章和评论");
         //遍历清除满足一定举报次数的文章/评论
         reportMap.forEach((key,value)->{
-            if(Integer.parseInt(value.toString()) > REPORTED_MAX_COUNT){
-                String[] split = key.toString().split(":");
+            if(Integer.parseInt(String.valueOf(value)) > REPORTED_MAX_COUNT){
+                String[] split = String.valueOf(key).split(":");
                 Integer type = Integer.getInteger(split[0]);
                 Long id = Long.parseLong(split[1]);
                 //删除文章/评论

@@ -15,7 +15,6 @@ public class ArticleInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        //对缓存进行操作
-        //对文章id的合法性校验
+
     }
 }

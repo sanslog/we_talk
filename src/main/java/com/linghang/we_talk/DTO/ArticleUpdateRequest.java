@@ -13,7 +13,6 @@ public class ArticleUpdateRequest {
     @NotNull(message = "文章ID不能为空")
     private Long id;
 
-    @NotNull(message = "用户ID不能为空")
     private Long userId;
 
     private String title;

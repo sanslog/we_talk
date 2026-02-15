@@ -21,7 +21,7 @@ public class JwtInterceptor implements HandlerInterceptor {
 
     private static final String TOKEN_HEADER = "Authorization";
     private static final String BLACKLIST_KEY_PREFIX = "jwt:blacklist:";
-    private static final String USERNAME_ATTR = "username";
+    private static final String USERNAME_ATTR = "userid";
     private static final String TOKEN_EXPIRED_HEADER = "X-Token-Expired";
 
     @Override

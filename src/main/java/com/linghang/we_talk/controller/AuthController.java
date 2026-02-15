@@ -49,19 +49,18 @@ public class AuthController {
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
 
+        Long userid = userService.canLogin(new User(null, username, null, password));
         //密码校验
-        if(!userService.canLogin(new User(null, username, null, password)))
-            return ResponseEntity.badRequest().body(Map.of(
-                    "error","账户或者密码错误"
-            ));
+        if(userid==-1) return ResponseEntity.badRequest().body(Map.of(
+                    "error","账户或者密码错误"));
 
         //生成token
-        String accessToken = jwtUtil.generateAccessToken(username);
-        String refreshToken = jwtUtil.generateRefreshToken(username);
+        String accessToken = jwtUtil.generateAccessToken(userid.toString());
+        String refreshToken = jwtUtil.generateRefreshToken(userid.toString());
 
         // 存储RefreshToken到Redis
         redisTemplate.opsForValue().set(
-                jwtUtil.JWT_REFRESH + username,
+                jwtUtil.JWT_REFRESH + userid,
                 refreshToken,
                 jwtUtil.REFRESH_EXPIRE,
                 TimeUnit.MILLISECONDS
@@ -84,7 +83,7 @@ public class AuthController {
         String password = registerRequest.getPassword();
 
         try {
-            userService.register(new User(null,username,null,password));
+            userService.register(new User(null,username,username,password));
         } catch (Exception e) {
             ResponseEntity.badRequest().body(Map.of("error","注册失败"));
         }
@@ -97,10 +96,10 @@ public class AuthController {
     public ResponseEntity<Map<String,String>> refreshToken(@RequestHeader("refresh-Token") String refreshToken,
                                                @RequestHeader(value = "Authorization",required = false) String oldAccessToken) {
         try {
-            String username = jwtUtil.validateToken(refreshToken);
+            String userid = jwtUtil.validateToken(refreshToken);
 
             // 验证Redis中的RefreshToken
-            String storedToken = redisTemplate.opsForValue().get(jwtUtil.JWT_REFRESH + username);
+            String storedToken = redisTemplate.opsForValue().get(jwtUtil.JWT_REFRESH + userid);
             if(!refreshToken.equals(storedToken)) {
                 throw new RuntimeException("Invalid refresh token");
             }
@@ -117,7 +116,7 @@ public class AuthController {
             }
 
             // 生成新Token
-            String newAccessToken = jwtUtil.generateAccessToken(username);
+            String newAccessToken = jwtUtil.generateAccessToken(userid);
 
             return ResponseEntity.ok().body(Map.of(
                     "AccessToken",newAccessToken,
@@ -131,9 +130,10 @@ public class AuthController {
     @GetMapping("/info")
     public Result<User> getUserInfo(@RequestHeader("Authorization") String accessToken){
         try {
-            String username = jwtUtil.validateToken(accessToken);
-            User userByName = userService.getUserByName(username);
-            return Result.succeed(userByName);
+            String userid = jwtUtil.validateToken(accessToken);
+            User userById = userService.getUserById(userid);
+            userById.setPassword("refused to view");
+            return Result.succeed(userById);
         } catch (Exception e) {
             log.error("获取用户信息失败{}",e.getMessage());
             return Result.error();
@@ -145,8 +145,8 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<Map<String,String>> logout(@RequestHeader("Authorization") String accessToken) {
         try {
-            String username = jwtUtil.validateToken(accessToken);
-            redisTemplate.delete(jwtUtil.JWT_REFRESH + username);
+            String userid = jwtUtil.validateToken(accessToken);
+            redisTemplate.delete(jwtUtil.JWT_REFRESH + userid);
             redisTemplate.opsForValue().set(
                     jwtUtil.JWT_BLACKLIST+accessToken,
                     "revoked",

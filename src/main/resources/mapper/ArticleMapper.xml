@@ -40,33 +40,37 @@
     </update>
 
     <select id="findById" resultMap="ArticleResultMap">
-        SELECT * FROM articles WHERE id = #{id} AND status != 2
+        SELECT a.* , u.nickname FROM articles a
+        INNER JOIN user u ON a.user_id = u.id
+        WHERE a.id = #{id} AND a.status != 2
     </select>
 
     <select id="findByUserId" resultMap="ArticleResultMap">
-        SELECT * FROM articles
-        WHERE user_id = #{userId} AND status != 2
+        SELECT a.* ,u.nickname
+        FROM articles a inner join user u on a.user_id = u.id
+        WHERE a.user_id = #{userId} AND a.status != 2
         ORDER BY created_at DESC
     </select>
 
     <select id="findArticles" resultMap="ArticleResultMap">
-        SELECT id,
-               user_id,
-               title,
-               cover_image,
-               status,
-               view_count,
-               like_count,
-               comment_count,
-               category_id,
-               tags,
-               created_at
-        FROM articles
-        WHERE status = #{status}
+        SELECT a.id,
+               a.user_id,
+               a.title,
+               a.cover_image,
+               a.status,
+               a.view_count,
+               a.like_count,
+               a.comment_count,
+               a.category_id,
+               a.tags,
+               a.created_at,
+               u.nickname
+        FROM articles a inner join user u on a.user_id = u.id
+        WHERE a.status = #{status}
         <if test="categoryId != null">
-            AND category_id = #{categoryId}
+            AND a.category_id = #{categoryId}
         </if>
-        ORDER BY created_at DESC
+        ORDER BY a.created_at DESC
         LIMIT #{offset}, #{limit}
     </select>
 

@@ -33,6 +33,8 @@ public interface ArticleService {
      */
     ArticleVO getArticleDetail(Long articleId);
 
+
+
     /**
      * 分页查询文章列表
      */
@@ -51,11 +53,11 @@ public interface ArticleService {
     /**
      * 点赞文章
      */
-    void likeArticle(Long articleId,Integer userId);
+    void likeArticle(Long articleId,Long userId);
 
-    boolean checkLiked(Long articleId, Integer userid);
+    boolean checkLiked(Long articleId, Long userid);
 
-    void disLikeArticle(Long articleId, Integer userId);
+    void disLikeArticle(Long articleId, Long userId);
 
     /**
      * 点赞并缓存点赞，通过定时刷新实现更新

@@ -10,7 +10,6 @@ import com.linghang.we_talk.service.ArticleService;
 import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -157,7 +156,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    @Cacheable(value = "article#10m", key = "#articleId", unless = "#result == null",sync = true)
+    @Cacheable(value = "article#10m", key = "#articleId",sync = true)
     public ArticleVO getArticleDetail(Long articleId) {
         log.debug("获取文章详情, ID: {}", articleId);
 
@@ -179,7 +178,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    @Cacheable(value = "article:list#4m",key = "'article:list:' + (#status ?: 1) + ':' + (#categoryId) + ':' + #page + ':' + #size",sync = true)
+    //@Cacheable(value = "article:list#4m",key = "'article:list:' + (#status ?: 1) + ':' + (#categoryId) + ':' + #page + ':' + #size",sync = true)
     public Page<ArticleVO> getArticleList(Integer status, Integer categoryId, int page, int size) {
         log.debug("查询文章列表, 状态: {}, 分类: {}, 页码: {}, 大小: {}", status, categoryId, page, size);
 
@@ -223,18 +222,18 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void likeArticle(Long articleId,Integer userId) {
+    public void likeArticle(Long articleId,Long userId) {
         //articleMapper.incrementLikeCount(articleId);
         articleMapper.insertLike(articleId,userId);
     }
 
     @Override
-    public boolean checkLiked(Long articleId, Integer userid){
+    public boolean checkLiked(Long articleId, Long userid){
         return articleMapper.searchLike(articleId,userid)!=null;
     }
 
     @Override
-    public void disLikeArticle(Long articleId, Integer userId) {
+    public void disLikeArticle(Long articleId, Long userId) {
         articleMapper.delLike(articleId,userId);
     }
 
@@ -302,6 +301,7 @@ public class ArticleServiceImpl implements ArticleService {
         vo.setCategoryId(article.getCategoryId());
         vo.setCreatedAt(article.getCreatedAt());
         vo.setUpdatedAt(article.getUpdatedAt());
+        vo.setAuthorName(article.getNickname());
 
         // 处理标签
         if (StringUtils.hasText(article.getTags())) {

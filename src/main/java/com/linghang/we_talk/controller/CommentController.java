@@ -4,6 +4,7 @@ import com.linghang.we_talk.DTO.CommentDTO;
 import com.linghang.we_talk.entity.Comment;
 import com.linghang.we_talk.service.CommentService;
 import com.linghang.we_talk.utils.Result;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +45,7 @@ public class CommentController {
         return Result.succeed();
     }
 
+    @Operation(summary = "根据文章ID查找对应评论")
     @GetMapping
     public Result<?> getComments(@PathParam("id") Long id){
         try {
