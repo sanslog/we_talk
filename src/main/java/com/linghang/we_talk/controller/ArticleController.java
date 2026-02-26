@@ -166,15 +166,18 @@ public class ArticleController {
         return Result.succeed(articleService.checkLiked(articleId,userId));
     }
 
-    @Operation(summary = "访问该接口，则表示指定id的文章浏览量加一")
-    @PostMapping("/{id}/view")
-    public Result<?> viewArticle(@PathVariable Long id) {
-        //操作内存
-        try {
-            articleService.readArticle(id);
-        } catch (Exception e) {
-            return Result.error();
-        }
-        return Result.succeed();
-    }
+      /*
+       * 废弃API，已重构，请勿重复实现
+       */
+//    @Operation(summary = "访问该接口，则表示指定id的文章浏览量加一")
+//    @PostMapping("/view")
+//    public Result<?> viewArticle(@RequestParam(name = "id") Long id) {
+//        //操作内存
+//        try {
+//            articleService.readArticle(id);
+//        } catch (Exception e) {
+//            return Result.error();
+//        }
+//        return Result.succeed();
+//    }
 }

@@ -109,7 +109,10 @@ public class ScheduleService {
         if (!resultList.isEmpty()) {
             try {
                 log.info("开始持久化 {} 篇文章的浏览量增量", resultList.size());
+                long start = System.currentTimeMillis();
                 articleService.viewsToDB(resultList);
+                long end = System.currentTimeMillis();
+                log.info("数据持久化累计耗时：{}ms",end-start);
 
                 // 4. 数据库更新成功后删除Redis中的数据
                 String[] processedKeys = resultList.stream()

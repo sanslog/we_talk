@@ -1,7 +1,6 @@
 server:
   compression:
     enabled: true
-    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/json
     min-response-size: 1024
   servlet:
     context-path: /AnimalSchool # 统一URL前缀
@@ -69,6 +68,7 @@ springdoc:
 
 redis-template:
   keys:
-    article: 'article'
     article-like: 'article:like:'
     article-views: 'article:views:'
+    reported-key: 'report'
+    reported-max-count : 15

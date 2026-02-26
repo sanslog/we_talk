@@ -14,13 +14,15 @@ import org.springframework.web.servlet.HandlerInterceptor;
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
 
+    //TODO:通过jwt来实现鉴权
+
     @Resource
     private RedisTemplate<String, String> redisTemplate;
     @Resource
     private JwtUtil jwtUtil;
 
     private static final String TOKEN_HEADER = "Authorization";
-    private static final String BLACKLIST_KEY_PREFIX = "jwt:blacklist:";
+//    private static final String BLACKLIST_KEY_PREFIX = "jwt:blacklist:";
     private static final String USERNAME_ATTR = "userid";
     private static final String TOKEN_EXPIRED_HEADER = "X-Token-Expired";
 
@@ -28,7 +30,7 @@ public class JwtInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, @Nullable HttpServletResponse response,@Nullable Object handler) {
         String token = request.getHeader(TOKEN_HEADER);
 
-        if (redisTemplate.hasKey(BLACKLIST_KEY_PREFIX + token)) {
+        if (redisTemplate.hasKey(jwtUtil.JWT_BLACKLIST+ token)) {
             throw new JWTVerificationException("Invalid token");
         }
 

@@ -247,7 +247,7 @@ public class ArticleServiceImpl implements ArticleService {
 //        redisTemplate.opsForValue().increment(ARTICLE_VIEW+articleId);
         try {
             HashOperations<String, String, Long> hashOps = redisTemplate.opsForHash();
-            hashOps.increment(ARTICLE_VIEW, articleId.toString(), 1L);
+            hashOps.increment(ARTICLE_VIEW, articleId.toString(), 0L);
         } catch (Exception e) {
             log.error("增加文章浏览量出错{}", e.getMessage());
             //这里可以降级走数据库
